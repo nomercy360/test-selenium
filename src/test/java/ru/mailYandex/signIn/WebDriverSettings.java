@@ -1,10 +1,11 @@
-package ru.mailYandex;
+package ru.mailYandex.signIn;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -22,25 +23,20 @@ public class WebDriverSettings {
         driver.get("https://mail.yandex.ru");
         String title = driver.getTitle();
         Assert.assertTrue(title.equals("Яндекс.Почта — бесплатная и надежная электронная почта"));
+        SignIn sigIn = PageFactory.initElements(driver, SignIn.class);
+        sigIn.clickSignInButton();
+        sigIn.fillLogin();
+        sigIn.fillPassword();
+        sigIn.logIn();
 
-        driver.findElement(By.xpath("/html/body//div/a[@data-reactid=\"24\"]")).click();
-        wait  = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("passp-field-login")));
-
-        driver.findElement(By.id("passp-field-login")).sendKeys("maximkadocnikov@yandex.ru");
-        driver.findElement(By.xpath("/html/body/div//form/div/button")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("passp-field-passwd")));
-
-        driver.findElement(By.id("passp-field-passwd")).sendKeys("Ex123465");
-        driver.findElement(By.xpath("/html/body/div//form/div/button")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body//span//span/a")));
 
         String title1 =  driver.getTitle();
-        Assert.assertTrue(title1.contains("Входящие — Яндекс.Почта"));
+        //Assert.assertTrue(title1.contains("Входящие — Яндекс.Почта"));
     }
     @After
     public void close(){
-        //driver.quit();
+
+        driver.quit();
     }
 
 }

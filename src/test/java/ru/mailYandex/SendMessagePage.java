@@ -45,11 +45,13 @@ public class SendMessagePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(doneTitle));
         String successText = driver.findElement(success).getText();
         Assert.assertTrue(successText.equals("Письмо отправлено."));
+        System.out.println("Message successfully send");
     }
     public void failureNoneEmailCheck () {
         wait.until(ExpectedConditions.visibilityOfElementLocated(noneEmailError));
         String noneEmailErrorText = driver.findElement(noneEmailError).getText();
         Assert.assertTrue(noneEmailErrorText.equals("Поле не заполнено. Необходимо ввести адрес."));
+        System.out.println("Message doesn't send");
 
     }
 }

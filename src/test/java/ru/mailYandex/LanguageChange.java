@@ -1,6 +1,5 @@
 package ru.mailYandex;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,11 +15,9 @@ public class LanguageChange {
 
 
 
+
+
     LanguageType current = LanguageType.RUS;
-
-
-
-
 
 
 
@@ -30,6 +27,7 @@ public class LanguageChange {
     public LanguageChange(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 15);
+
     }
 
     private By setup = By.cssSelector("[href=\"#setup\"]");
@@ -45,7 +43,11 @@ public class LanguageChange {
         wait.until(ExpectedConditions.visibilityOfElementLocated(currentLang));
 
 
+
+
+
     }
+
 
     public void switchLanguage() {
         switch (current) {
@@ -85,17 +87,20 @@ public class LanguageChange {
                         }
                     }
                 }
+
         }
+
+
     }
     public void switchLanguageCheck () {
         switch (current) {
             case RUS:
                 wait.until(ExpectedConditions.titleContains("Яндекс.Почта"));
-                System.out.println("Language changed successfully");
+                System.out.println("Your language is Russian now");
                 break;
             case ENG:
                 wait.until(ExpectedConditions.titleContains("Yandex.Post"));
-                System.out.println("Language changed successfully");
+                System.out.println("Your language is English now");
                 break;
 
 

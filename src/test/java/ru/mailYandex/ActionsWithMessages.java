@@ -22,7 +22,8 @@ public class ActionsWithMessages {
     private By box = By.cssSelector("[data-nb=\"checkbox\"]");
     private By name = By.cssSelector("[class=\"mail-MessageSnippet-FromText\"]");
     private By deleteButton = By.cssSelector("[class=\"mail-Toolbar-Item-Text js-toolbar-item-title js-toolbar-item-title-delete\"]");
-    private By check = By.cssSelector("[class=\"mail-NestedList-Item-Info-Extras\"]");
+    private By check = By.xpath("//a[@class='mail-NestedList-Item-Info-Link js-folder-info-link']");
+
     private int prev;
     private String previously;
     public void select () {
@@ -31,11 +32,12 @@ public class ActionsWithMessages {
         prev = boxes.size();
         previously = driver.findElement(check).getText();
         for (int i = 0; i < boxes.size(); i++) {
-            System.out.println(boxes.get(i).getText());
             if (names.get(i).getText().equals("Максим Кадочников")) {
                 boxes.get(i).click();
             }
         }
+        System.out.println("messages selected successfully");
+
     }
     public void delete () {
         driver.findElement(deleteButton).click();
@@ -43,10 +45,14 @@ public class ActionsWithMessages {
 
     }
     public void successCheck() throws InterruptedException {
-        Thread.sleep(100);
+
+        System.out.println(previously);
+        Thread.sleep(3000);
         String actual = driver.findElement(check).getText();
+        System.out.println("Number of your posts before: " + previously);
+        System.out.println("Number of your posts now: " + actual);
         Assert.assertNotEquals(actual, previously);
-        System.out.println("gg");
+        System.out.println("messages deleted successfully");
 
 
 

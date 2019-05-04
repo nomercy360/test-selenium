@@ -30,9 +30,12 @@ public class SignIn {
     }
     public void fillLogin () {
         driver.findElement(loginField).sendKeys("maximkadocnikov@yandex.ru");
+        driver.findElement(logInButton).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(passwordField));
+
     }
     public void fillPassword() {
+
         driver.findElement(passwordField).sendKeys("Ex123465");
     }
     public void logIn () {

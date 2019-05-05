@@ -4,7 +4,7 @@ import org.openqa.selenium.support.PageFactory;
 import ru.mailYandex.signIn.WebDriverSettings;
 
 
-public class FirstTest extends WebDriverSettings {
+public class FirstTests extends WebDriverSettings {
 
 
     @Test

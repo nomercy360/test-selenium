@@ -22,12 +22,14 @@ public class WebDriverSettings {
         driver.get("https://mail.yandex.ru");
         String title = driver.getTitle();
         Assert.assertTrue(title.equals("Яндекс.Почта — бесплатная и надежная электронная почта"));
+
+
+
         SignIn sigIn = PageFactory.initElements(driver, SignIn.class);
         sigIn.clickSignInButton();
         sigIn.fillLogin();
         sigIn.fillPassword();
         sigIn.logIn();
-
 
         String title1 =  driver.getTitle();
 
@@ -36,7 +38,7 @@ public class WebDriverSettings {
     @After
     public void close(){
 
-        driver.quit();
+       // driver.quit();
     }
 
 }

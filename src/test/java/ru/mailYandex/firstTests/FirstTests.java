@@ -1,13 +1,7 @@
-package ru.mailYandex;
-import org.junit.Assert;
+package ru.mailYandex.firstTests;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.mailYandex.signIn.WebDriverSettings;
-
-import java.util.List;
 
 
 public class FirstTest extends WebDriverSettings {
@@ -84,8 +78,8 @@ public class FirstTest extends WebDriverSettings {
 
         LanguageChange languageChange = PageFactory.initElements(driver, LanguageChange.class);
         languageChange.enteringSetting();
-        languageChange.switchLanguage();
-        languageChange.switchLanguageCheck();
+        languageChange.switchLanguage(Language.ENG);
+        languageChange.switchLanguageCheck(Language.ENG);
 
 
 

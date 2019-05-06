@@ -34,6 +34,10 @@ public class SendMessagePage {
     }
     public void sendMessage() {
         driver.findElement(sendButton).click();
+
+    }
+    public void fillWrongSender(){
+        driver.findElement(nameTo).sendKeys("qwerty");
     }
     public void fillSender() {
         driver.findElement(nameTo).sendKeys("maximkadocnikov@yandex.ru");
@@ -51,5 +55,11 @@ public class SendMessagePage {
         Assert.assertTrue(noneEmailErrorText.equals("Поле не заполнено. Необходимо ввести адрес."));
         System.out.println("Message doesn't send");
 
+    }
+    public void failureWrongEmailCheck () {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(noneEmailError));
+        String wrongEmailErrorText = driver.findElement(noneEmailError).getText();
+        Assert.assertTrue(wrongEmailErrorText.equals("Некорректные адреса: asd"));
+        System.out.println("Message doesn't send");
     }
 }

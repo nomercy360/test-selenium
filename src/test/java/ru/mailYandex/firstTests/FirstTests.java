@@ -4,6 +4,7 @@ import org.openqa.selenium.support.PageFactory;
 import ru.mailYandex.signIn.WebDriverSettings;
 
 
+
 public class FirstTests extends WebDriverSettings {
 
 
@@ -34,6 +35,14 @@ public class FirstTests extends WebDriverSettings {
         sendMessagePage.fillTheme();
         sendMessagePage.sendMessage();
         sendMessagePage.failureNoneEmailCheck();
+
+    }
+    @Test
+    public void sendMessageWrongEmail () {
+        SendMessagePage sendMessagePage = PageFactory.initElements(driver, SendMessagePage.class);
+        sendMessagePage.open();
+        sendMessagePage.fillWrongSender();
+        sendMessagePage.failureWrongEmailCheck();
 
     }
 
@@ -78,8 +87,8 @@ public class FirstTests extends WebDriverSettings {
 
         LanguageChange languageChange = PageFactory.initElements(driver, LanguageChange.class);
         languageChange.enteringSetting();
-        languageChange.switchLanguage(Language.ENG);
-        languageChange.switchLanguageCheck(Language.ENG);
+        languageChange.switchLanguage(Language.RUS);
+        languageChange.switchLanguageCheck(Language.RUS);
 
 
 

@@ -23,18 +23,30 @@ public class ActionsWithMessages {
     private By check = By.xpath("//a[@class='mail-NestedList-Item-Info-Link js-folder-info-link']");
 
     private int prev;
+    private int del;
     private String previously;
+
     public void select () {
         List<WebElement> boxes = driver.findElements(box);
         List<WebElement> names = driver.findElements(name);
-        prev = boxes.size();
         previously = driver.findElement(check).getText();
+        del = 0;
+        previously = previously.replaceAll("[^0-9]+", "");
+        prev = Integer.parseInt(previously);
+
         for (int i = 0; i < boxes.size(); i++) {
+            System.out.println(names.get(i).getText());
             if (names.get(i).getText().equals("Максим Кадочников")) {
                 boxes.get(i).click();
+                del++;
             }
         }
-        System.out.println("messages selected successfully");
+        if (del == 0) {
+            System.out.println("Messages didn't selected");
+        }
+        else {
+            System.out.println("messages selected successfully");
+        }
 
     }
     public void delete () {
@@ -43,14 +55,19 @@ public class ActionsWithMessages {
 
     }
     public void successCheck() throws InterruptedException {
+        if (del == 0) {
+            System.out.println("messages have'nt been deleted");
+        }
+        else {
 
-        System.out.println(previously);
-        Thread.sleep(3000);
-        String actual = driver.findElement(check).getText();
-        System.out.println("Number of your posts before: " + previously);
-        System.out.println("Number of your posts now: " + actual);
-        Assert.assertNotEquals(actual, previously);
-        System.out.println("messages deleted successfully");
+            Thread.sleep(3000);
+            String actual = driver.findElement(check).getText();
+            int act = Integer.parseInt(actual);
+            System.out.println("Number of your posts before: " + prev);
+            System.out.println("Number of your posts now: " + act);
+            Assert.assertTrue(prev - del == act);
+            System.out.println("messages deleted successfully");
+        }
 
 
 

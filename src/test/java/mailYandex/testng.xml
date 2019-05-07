@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?javac -encoding utf-8 ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SuiteTestname" thread-count="3" parallel="tests">
+    <test name="TestSwitchLanguage">
+        <groups>
+            <run>
+                <include name="SW-.*"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="mailYandex.MailYandexTests"/>
+        </classes>
+    </test>
+    <test name="TestMessageSend">
+        <groups>
+            <run>
+                <include name="MS-.*"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="mailYandex.MailYandexTests"/>
+        </classes>
+    </test>
+    <test name="TestDeleteMessage">
+        <groups>
+            <run>
+                <include name="DL-.*"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="mailYandex.MailYandexTests"/>
+        </classes>
+    </test>
+</suite>

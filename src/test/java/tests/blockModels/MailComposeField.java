@@ -1,4 +1,4 @@
-package tests;
+package tests.blockModels;
 
 import io.qameta.htmlelements.annotation.Description;
 import io.qameta.htmlelements.annotation.FindBy;
@@ -9,7 +9,7 @@ public interface MailComposeField extends ExtendedWebElement {
     @Description("Поля для ввода адреса получателя")
     ExtendedWebElement recipientAddress();
 
-    @FindBy("//button[@id='nb-43']")
+    @FindBy("//button[@id='nb-16']")
     @Description("Кнопка отправки письма")
     ExtendedWebElement sendButton();
 

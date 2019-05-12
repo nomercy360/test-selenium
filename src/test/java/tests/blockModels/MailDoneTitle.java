@@ -1,4 +1,4 @@
-package tests;
+package tests.blockModels;
 
 import io.qameta.htmlelements.annotation.Description;
 import io.qameta.htmlelements.annotation.FindBy;

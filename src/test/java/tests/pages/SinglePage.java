@@ -5,10 +5,10 @@ import io.qameta.htmlelements.WebPage;
 import io.qameta.htmlelements.annotation.Description;
 import io.qameta.htmlelements.annotation.FindBy;
 import io.qameta.htmlelements.extension.page.BaseUrl;
-import tests.*;
+import tests.blockModels.*;
 
 @BaseUrl("https://yandex.ru/")
-public interface Pages extends WebPage {
+public interface SinglePage extends WebPage {
 
     @FindBy("//div[@class='desk-notif-card__card']")
     @Description("Блок входа")
@@ -18,11 +18,11 @@ public interface Pages extends WebPage {
     @Description("Блок ввода логина и пароля")
     PassLoginForm passLoginForm();
 
-    @FindBy("//div[@class='ns-view-messages ns-view-id-109 js-action-context']")
+    @FindBy("//div[contains(@class, 'Pane-Wrap')]")
     @Description("Блок отправки и обновления сообщений")
     MessagesView messagesView();
 
-    @FindBy("//div[@class='ns-view-toolbar-buttons ns-view-id-151']")
+    @FindBy("//div[contains(@class, 'ns-view-toolbar-buttons')]")
     @Description("Панель инструментов")
     ToolBar toolbar();
 
@@ -32,7 +32,7 @@ public interface Pages extends WebPage {
 
     @FindBy("//div[contains(@class, 'ns-view-head-settings-controls')]")
     @Description("Настройки управления")
-    SettingsControl settingcontrol();
+    SettingsControl settingControl();
 
     @FindBy("//div[@aria-describedby='settings-dropdown']")
     @Description("Раскрывающееся меню настроек")
@@ -46,7 +46,7 @@ public interface Pages extends WebPage {
     @Description("Меню выбора языка")
     LangSettings langSettings();
 
-    @FindBy("//div[@class='ns-view-folders-box ns-view-id-62']")
+    @FindBy("//div[contains(@class, 'ns-view-folders-box')]")
     @Description("Блок сообщений")
     MessagesTypes messagesTypes();
 
@@ -54,7 +54,7 @@ public interface Pages extends WebPage {
     @Description("Поле отправки сообщения")
     MailComposeField mailComposeField();
 
-    @FindBy("//div[@class='ns-view-sdtyuc ns-view-id-59']")
+    @FindBy("//div[contains(@class, 'ns-view-sdtyuc')]")
     @Description("страница после отправки")
     MailDoneTitle mailDonePage();
 }

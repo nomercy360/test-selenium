@@ -35,16 +35,17 @@ buildscript {
         classpath "io.qameta.allure:allure-gradle:2.5"
     }
 }
-
 allure {
     version = '2.7.0'
     aspectjweaver = true
     autoconfigure = true
 }
 
-task p1(type: Test) {
+
+
+task SuiteTestname1(type: Test) {
     ignoreFailures = true
     useTestNG() {
-        options.suites 'src/test/java/mailYAndex/testng.xml'
+        options.suites 'src/test/java/tests/testng/testng.xml'
     }
 }

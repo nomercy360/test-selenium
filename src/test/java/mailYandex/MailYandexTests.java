@@ -9,7 +9,7 @@ import org.testng.log4testng.Logger;
 
 import java.util.List;
 
-public class MailYandexTests extends SetUp {
+class MailYandexTests extends SetUp {
     private static final Logger LOGGER = Logger.getLogger(MailYandexTests.class);
 
     private static int prev;
@@ -65,7 +65,7 @@ public class MailYandexTests extends SetUp {
         }
     }
 
-    private void selectMessages(String emailFrom) {
+    private void selectMessa2ges(String emailFrom) {
         List<WebElement> boxes = driver.findElements(By.xpath("//span[@class='_nb-checkbox-flag _nb-checkbox-normal-flag']"));
         List<WebElement> names = driver.findElements(By.xpath("//span[@class='mail-MessageSnippet-FromText']"));
         previously = driver.findElement(By.xpath("//span[@class='mail-NestedList-Item-Info-Link-Text']")).getText();
@@ -88,7 +88,7 @@ public class MailYandexTests extends SetUp {
 
     }
 
-    private void deleteMessages() {
+    private void delete2Messages() {
         driver.findElement(By.xpath("//div[contains(@title , '(Delete)')]")).click();
 
     }
@@ -195,16 +195,16 @@ public class MailYandexTests extends SetUp {
     }
 
     @Test(groups = "DL-1")
-    public void selectMessage() {
-        selectMessages("maximkadocnikov@yandex.ru");
+    public void selectMessa2ge() {
+        selectMessa2ges("maximkadocnikov@yandex.ru");
 
 
     }
 
     @Test(groups = "DL-2")
     public void messagesDelete() {
-        selectMessages("maximkadocnikov@yandex.ru");
-        deleteMessages();
+        selectMessa2ges("maximkadocnikov@yandex.ru");
+        delete2Messages();
         checkDeleteLetters();
     }
 

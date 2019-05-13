@@ -29,7 +29,6 @@ public class YandexTest {
 
     @BeforeMethod(alwaysRun = true, description = "зашли в почту")
     private void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Maxfactor\\IdeaProjects\\test-selenium\\chrome\\chromedriver.exe");
         driver = new ChromeDriver();
         page = factory.get(driver, SinglePage.class);
         page.getWrappedDriver().manage().window().maximize();

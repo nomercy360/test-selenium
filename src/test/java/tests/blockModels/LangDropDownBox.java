@@ -6,7 +6,7 @@ import io.qameta.htmlelements.annotation.Param;
 import io.qameta.htmlelements.element.ExtendedWebElement;
 
 public interface LangDropDownBox extends ExtendedWebElement {
-    @FindBy("{{ val }}")
+    @FindBy("//a[@data-params='lang={{ val }}]")
     @Description("Кнопка выбранного языка")
     ExtendedWebElement selectLang(@Param("val") String val);
 }

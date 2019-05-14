@@ -43,9 +43,9 @@ allure {
 
 
 
-task SuiteTestname1(type: Test) {
+task a1(type: Test) {
     ignoreFailures = true
     useTestNG() {
-        options.suites 'src/test/java/tests/testng/testng.xml'
+        options.suites 'src/test/java/tests/testng/testingShow.xml'
     }
 }

@@ -54,7 +54,7 @@ public interface SinglePage extends WebPage {
     @Description("Поле отправки сообщения")
     MailComposeField mailComposeField();
 
-    @FindBy("//div[contains(@class, 'ns-view-sdtyuc')]")
+    @FindBy("//div[contains(@class, 'ns-view-done ns-view')]")
     @Description("страница после отправки")
-    MailDoneTitle mailDonePage();
+    MailDonePage mailDonePage();
 }

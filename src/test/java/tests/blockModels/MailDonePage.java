@@ -4,8 +4,8 @@ import io.qameta.htmlelements.annotation.Description;
 import io.qameta.htmlelements.annotation.FindBy;
 import io.qameta.htmlelements.element.ExtendedWebElement;
 
-public interface MailDoneTitle extends ExtendedWebElement {
-    @FindBy("//div[@class='mail-Done-Title js-title-info']")
+public interface MailDonePage extends ExtendedWebElement {
+    @FindBy("//div[@class='mail-Done-Redirect']")
     @Description("Сообщение успешной отправки сообщения")
     ExtendedWebElement messageDoneTitle();
 

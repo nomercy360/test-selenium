@@ -19,6 +19,7 @@ import tests.pages.SinglePage;
 import static org.hamcrest.Matchers.not;
 
 public class YandexTest {
+
     private static Logger LOGGER = LoggerFactory.getLogger(YandexTest.class);
     WebPageFactory factory = new WebPageFactory();
     WebDriver driver;
@@ -100,10 +101,20 @@ public class YandexTest {
                 selected.getLanguageName());
     }
 
-    @Step("Отправка сообщения")
-    public void mailSend(String address, String theme) {
+    @Step("Заполнить адрес получателя")
+    public void fillAddress(String address) {
         page.mailComposeField().recipientAddress().sendKeys(address);
+
+    }
+
+    @Step("Заполнить тему письма")
+    private void fillTheme(String theme) {
         page.mailComposeField().messageTheme().sendKeys(theme);
+
+    }
+
+    @Step("Нажать кнопку отправить")
+    private void clickSendButton() {
         page.mailComposeField().sendButton().click();
     }
 
@@ -181,21 +192,26 @@ public class YandexTest {
     @Test(groups = "MS-1")
     private void sendFullMessage() {
         goToWriteLetter();
-        mailSend("maximkadocnikov@yandex.ru", "weather");
+        fillAddress("maximkadocnikov@yandex.ru");
+        fillTheme("Weather");
+        clickSendButton();
         mailSendCheck();
     }
 
     @Test(groups = "MS-2")
     private void noEmailMessage() {
         goToWriteLetter();
-        mailSend("", "weather");
+        fillTheme("Weather");
+        clickSendButton();
         mailSendCheck();
     }
 
     @Test(groups = "MS-3")
     private void wrongEmailMessage() {
         goToWriteLetter();
-        mailSend("asdasd", "weather");
+        fillAddress("assdasfa");
+        fillTheme("weather");
+        clickSendButton();
         mailSendCheck();
     }
 
